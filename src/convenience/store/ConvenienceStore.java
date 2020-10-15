@@ -31,6 +31,7 @@ public class ConvenienceStore extends Application {
             }
         });
         //this is a comment
+        //this is another comment
         StackPane root = new StackPane();
         root.getChildren().add(btn);
         
