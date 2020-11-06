@@ -1,5 +1,6 @@
 package app.vista;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import javafx.geometry.Pos;
@@ -33,11 +34,11 @@ public class Login {
         Principal p = new Principal();
         bLogin.setOnAction(e -> {
             //checkIdentification();
-            stage.setScene(new Scene(p.principalPane(),800,500));
+            stage.setScene(new Scene(p.principalPane(stage),800,500));
                 });
         
         try{
-            loginIV.setImage(new Image(new FileInputStream("src/images/login.png")));
+            loginIV.setImage(new Image(new FileInputStream(new File("src/images/login.png"))));
         }catch(FileNotFoundException fnfe){
             fnfe.printStackTrace();
         }
