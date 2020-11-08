@@ -3,32 +3,56 @@
     Created on : Nov 4, 2020, 9:06:57 PM
     Author     : wrath
 */
-
+/* Calculator*/
 .flowpane { 
     -fx-background-color: white; 
     -fx-border-color: black;
     -fx-end-magin: 10;
 }
 
+/*Inventory*/
+#search{
+    -fx-background-image: 'src/images/searchIcon.jpg';
+}
+
+/*Tabs headers*/
 .tab-label{
     -fx-alignment: center;
     -fx-background-color: white;
+    -fx-padding: 0.5em 3em 0.5em 3em;
+}
+
+.tab-pane .tab-header-area{
+    -fx-alignment: center;
+    -fx-padding: 3.5em 0em 0em 10em;
 }
 
 .tab-pane .tab-header-area .tab-header-background{
     -fx-background-color: green;
 }
-
+/*Tab*/
 .tab{
     -fx-alignment: center;
     -fx-background-color: white;
 }
-
-.table-view{
-    -fx-alignment: center;
-}
-/*
 .tab-pane{
+    -fx-background-size: 100% 100%;
+}
+
+/*Regular Buttons*/
+.save{
+    -fx-background-color: blue;
+    -fx-text-fill: white;
+}
+.save:hover{
+    -fx-background-color: #A2A2A2;
+}
+
+.close{
     -fx-background-color: white;
 }
-*/
+.close:hover{
+    -fx-background-color: #A2A2A2;
+    -fx-text-fill: white;
+}
+

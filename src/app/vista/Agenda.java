@@ -1,6 +1,9 @@
 package app.vista;
 
+import app.modelo.Provider;
 import app.modelo.Supply;
+import java.util.Date;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -20,6 +23,7 @@ public class Agenda {
         TableColumn products = new TableColumn("Productos");
         
         tv.setPrefSize(600, 500);
+        tv.setEditable(true);
         insertSupplies();
         
         tv.getColumns().addAll(day, provider, amount, products);
@@ -27,8 +31,13 @@ public class Agenda {
     }
     
     private static void insertSupplies(){
+        Date today = new Date();
+        today.setTime(System.currentTimeMillis());
+        System.out.println(today.getTime());
         ObservableList<Supply> data = FXCollections.observableArrayList(
-                new Supply(new Date())
+                new Supply(today, new Provider("Gamesa"), 5000, null),
+                new Supply()
         );
+        tv.setItems(data);
     }
 }

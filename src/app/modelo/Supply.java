@@ -10,15 +10,19 @@ import java.util.Date;
 public class Supply {
     private Date day;
     private Provider provider;
-
+    private double amount;
+    private ArrayList<Product> products;
+    
+    public Supply(){
+        
+    }
+    
     public Supply(Date day, Provider provider, double amount, ArrayList<Product> products) {
         this.day = day;
         this.provider = provider;
         this.amount = amount;
         this.products = products;
     }
-    private double amount;
-    private ArrayList<Product> products;
 
     public Date getDay() {
         return day;
