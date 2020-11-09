@@ -12,7 +12,22 @@
 
 /*Inventory*/
 #search{
-    -fx-background-image: 'src/images/searchIcon.jpg';
+    -fx-background-image: url("../images/searchIcon.png");
+    -fx-background-size: 20px 20px;
+    /*-fx-background-insets: 10 0 0 10;*/
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 0em 2.5em 0em 2.5em;
+    -fx-border-color: black;
+}
+
+/*Principal special buttons*/
+#closeSession{
+    -fx-background-color: transparent;
+    -fx-background-size: contain;
+}
+
+#settings{
+    -fx-background-color: transparent;
 }
 
 /*Tabs headers*/
@@ -50,6 +65,7 @@
 
 .close{
     -fx-background-color: white;
+    -fx-border-color: black;
 }
 .close:hover{
     -fx-background-color: #A2A2A2;

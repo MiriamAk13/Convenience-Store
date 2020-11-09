@@ -38,7 +38,8 @@ public class Login {
                 });
         
         try{
-            loginIV.setImage(new Image(new FileInputStream(new File("src/images/login.png"))));
+            loginIV.setImage(new Image(new FileInputStream(
+                    new File("src/images/login.png"))));
         }catch(FileNotFoundException fnfe){
             fnfe.printStackTrace();
         }

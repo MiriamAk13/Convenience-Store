@@ -17,7 +17,8 @@ public class Supply {
         
     }
     
-    public Supply(Date day, Provider provider, double amount, ArrayList<Product> products) {
+    public Supply(Date day, Provider provider, double amount, 
+            ArrayList<Product> products) {
         this.day = day;
         this.provider = provider;
         this.amount = amount;

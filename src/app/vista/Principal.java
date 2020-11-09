@@ -13,6 +13,8 @@ import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -38,8 +40,9 @@ public class Principal {
         tp = new TabPane();
         
         Tab tInventario = new Tab(inventario.getText());
-        Tab tCuentas = new Tab(cuentas.getText());
-        Tab tCalculadora = new Tab(calculadora.getText(),Calculadora.calculadoraPane());
+        Tab tCuentas = new Tab(cuentas.getText(), Cuenta.cuentaPane());
+        Tab tCalculadora = new Tab(calculadora.getText(),Calculadora.
+                calculadoraPane());
         Tab tAgenda = new Tab(agenda.getText(), Agenda.agendaPane());
         
         tInventario.setContent(Inventario.inventarioPane(tInventario));
@@ -62,27 +65,48 @@ public class Principal {
     }
     
     private void showTabs(int startingTab){
+        // Selection model to start on the tab of tabpane that the user chose
         SingleSelectionModel<Tab> selectionModel = tp.getSelectionModel();
-        Group g = new Group();
-        ImageView logoIV = new ImageView();
         
-        selectionModel.select(startingTab);
+        /* StackPane to add the logo, closeSession and settings
+         its not possible to use another Layout because of the TabPane */
+        StackPane sp = new StackPane();
+        VBox v = new VBox();
+        ImageView logoIV = new ImageView();
+        Button closeSession = new Button("Cerrar Sesion");
+        Button settings = new Button();
+        ImageView settingsIV = new ImageView();
+        
+//        closeSession.setOnAction(e -> );
         try{
-            logoIV.setImage(new Image(new FileInputStream(new File("src/images/logo3.png"))));
+            logoIV.setImage(new Image(new FileInputStream(
+                    new File("src/images/logo3.png"))));
+            settingsIV.setImage(new Image(new FileInputStream(
+                    new File("src/images/settings.png"))));
         }catch(FileNotFoundException fnfe){
             fnfe.printStackTrace();
         }
         
-        logoIV.setFitHeight(70);
-        logoIV.setFitWidth(70);
+        logoIV.setFitHeight(80);
+        logoIV.setFitWidth(80);
         logoIV.setPreserveRatio(true);
-        logoIV.setX(0);
-        logoIV.setY(0);
-        logoIV.toFront();
+        settingsIV.setFitHeight(40);
+        settingsIV.setFitWidth(40);
+        settingsIV.setPreserveRatio(true);
+        settings.setGraphic(settingsIV);
+        settings.setId("settings");
+        settings.setTranslateY(20);
+        closeSession.setId("closeSession");
+        selectionModel.select(startingTab);
         
         
-        g.getChildren().addAll(tp, logoIV);
-        Scene scene = new Scene(g,900,600);
+        //v.getChildren().addAll(closeSession, settings);
+        sp.getChildren().addAll(tp, logoIV, closeSession, settings);
+        sp.setAlignment(logoIV, Pos.TOP_LEFT);
+        //sp.setAlignment(v, Pos.TOP_RIGHT);
+        sp.setAlignment(closeSession, Pos.TOP_RIGHT);
+        sp.setAlignment(settings, Pos.TOP_RIGHT);
+        Scene scene = new Scene(sp,800,500);
         
         scene.getStylesheets().add("tabs.css"); 
         stage.setScene(scene);
